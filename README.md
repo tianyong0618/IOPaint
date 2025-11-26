@@ -2,7 +2,7 @@
 <p align="center">A free and open-source inpainting & outpainting tool powered by SOTA AI model.</p>
 
 <p align="center">
-  <a href="https://github.com/Sanster/IOPaint">
+  <a href="https://github.com/tianyong0618/IOPaint">
     <img alt="total download" src="https://pepy.tech/badge/iopaint" />
   </a>
   <a href="https://pypi.org/project/iopaint">
@@ -21,11 +21,11 @@
 
 |Erase([LaMa](https://www.iopaint.com/models/erase/lama))|Replace Object([PowerPaint](https://www.iopaint.com/models/diffusion/powerpaint))|
 |-----|----|
-|<video src="https://github.com/Sanster/IOPaint/assets/3998421/264bc27c-0abd-4d8b-bb1e-0078ab264c4a">  | <video src="https://github.com/Sanster/IOPaint/assets/3998421/1de5c288-e0e1-4f32-926d-796df0655846">|
+|<video src="https://github.com/tianyong0618/IOPaint/assets/3998421/264bc27c-0abd-4d8b-bb1e-0078ab264c4a">  | <video src="https://github.com/tianyong0618/IOPaint/assets/3998421/1de5c288-e0e1-4f32-926d-796df0655846">|
 
 |Draw Text([AnyText](https://www.iopaint.com/models/diffusion/anytext))|Out-painting([PowerPaint](https://www.iopaint.com/models/diffusion/powerpaint))|
 |---------|-----------|
-|<video src="https://github.com/Sanster/IOPaint/assets/3998421/ffd4eda4-f7d4-4693-93d8-d2cd5aa7c6d6">|<video src="https://github.com/Sanster/IOPaint/assets/3998421/c4af8aef-8c29-49e0-96eb-0aae2f768da2">|
+|<video src="https://github.com/tianyong0618/IOPaint/assets/3998421/ffd4eda4-f7d4-4693-93d8-d2cd5aa7c6d6">|<video src="https://github.com/tianyong0618/IOPaint/assets/3998421/c4af8aef-8c29-49e0-96eb-0aae2f768da2">|
 
 
 ## Features
@@ -110,7 +110,7 @@ You can see more information about the available models and plugins supported by
 Install [nodejs](https://nodejs.org/en), then install the frontend dependencies.
 
 ```bash
-git clone https://github.com/Sanster/IOPaint.git
+git clone https://github.com/tianyong0618/IOPaint.git
 cd IOPaint/web_app
 npm install
 npm run build
