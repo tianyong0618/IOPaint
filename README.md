@@ -79,6 +79,72 @@ All models will be downloaded automatically at startup. If you want to change th
 
 You can see other supported models at [here](https://www.iopaint.com/models) and how to use local sd ckpt/safetensors file at [here](https://www.iopaint.com/models#load-ckptsafetensors).
 
+### Docker
+
+You can also use Docker to run IOPaint, which provides a consistent environment and easy deployment.
+
+#### Build Docker Image
+
+```bash
+# Build CPU image
+docker build --platform linux/amd64 -f ./docker/CPUDockerfile -t iopaint:cpu-1.6.0 .
+
+# Build GPU image (requires NVIDIA Docker runtime)
+docker build --platform linux/amd64 -f ./docker/GPUDockerfile -t iopaint:gpu-1.6.0 .
+```
+
+#### Run Docker Container
+
+```bash
+# Run CPU container with cv2 model (lightweight, no download required)
+docker run -p 13400:8080 -d --name iopaint -v ./models:/app/models iopaint:cpu-1.6.0 iopaint start --model=cv2 --device=cpu --port=8080 --model-dir=/app/models --host=0.0.0.0
+
+# Run CPU container with lama model
+docker run -p 13400:8080 -d --name iopaint -v ./models:/app/models iopaint:cpu-1.6.0 iopaint start --model=lama --device=cpu --port=8080 --model-dir=/app/models --host=0.0.0.0
+
+# Run GPU container
+docker run --gpus all -p 13400:8080 -d --name iopaint -v ./models:/app/models iopaint:gpu-1.6.0 iopaint start --model=lama --device=cuda --port=8080 --model-dir=/app/models --host=0.0.0.0
+```
+
+#### Access Service
+
+After running the container, you can access the IOPaint web interface at:
+```
+http://localhost:13400
+```
+
+#### Docker Compose (Optional)
+
+You can also use Docker Compose to manage your IOPaint deployment. Create a `docker-compose.yml` file:
+
+```yaml
+version: '3'
+services:
+  iopaint:
+    image: iopaint:cpu-1.6.0
+    ports:
+      - "13400:8080"
+    volumes:
+      - ./models:/app/models
+    command: iopaint start --model=cv2 --device=cpu --port=8080 --model-dir=/app/models --host=0.0.0.0
+    restart: unless-stopped
+```
+
+Then run:
+```bash
+docker-compose up -d
+```
+
+#### Save and Load Docker Image
+
+```bash
+# Save image to tar file
+docker save -o iopaint_cpu_1.6.0.tar iopaint:cpu-1.6.0
+
+# Load image from tar file
+docker load -i iopaint_cpu_1.6.0.tar
+```
+
 ### Plugins
 
 You can specify which plugins to use when starting the service, and you can view the commands to enable plugins by using `iopaint start --help`. 
